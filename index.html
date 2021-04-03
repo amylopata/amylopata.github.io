@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+            <title>AP6D Inspection 02/28/2021</title>
+
+            <!-- Leaflet -->
+			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+			<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+			<script src="https://unpkg.com/@ngageoint/leaflet-geopackage@3.0.3/dist/leaflet-geopackage.min.js"></script>
+				
+            <style>
+                body { margin:0; padding:0; }
+                body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet MS", "Ubuntu", Serif; font-size: 11pt; }
+                #map { position:absolute; top:0; bottom:0; width:100%; } /* full size */
+                .ctl {
+                    padding: 2px 10px 2px 10px;
+                    background: white;
+                    background: rgba(255,255,255,0.9);
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    border-radius: 5px;
+                    text-align: right;
+                }
+                .title {
+                    font-size: 18pt;
+                    font-weight: bold;
+                }
+                .src {
+                    font-size: 10pt;
+                }
+
+            </style>
+
+        </head>
+        <body>
+
+        <div id="map"></div>
+
+        <script>
+        /* **** Leaflet **** */
+
+        // Base layers
+        //  .. OpenStreetMap
+        var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+
+
+        // Overlay layers (TMS)
+        var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true, 
+			opacity: 0, 
+			attribution: "",
+			maxNativeZoom: 24,
+			maxZoom: 34
+	    });
+
+        // Map
+        var map = L.map('map', {
+            center: [40.44253, -79.94333],
+			opacity: 0,
+            zoom: 17,
+            minZoom: 0,
+            maxZoom: 24,
+            layers: [osm]
+        });
+
+        var basemaps = {"OpenStreetMap": osm}
+        var overlaymaps = {"Layer": lyr}
+		lyr.addTo(map);
+
+        // Title
+        var title = L.control();
+        title.onAdd = function(map) {
+            this._div = L.DomUtil.create('div', 'ctl title');
+            this.update();
+            return this._div;
+        };
+        title.update = function(props) {
+            this._div.innerHTML = "Carnegie Mellon Accessibility Map";
+        };
+        title.addTo(map);
+
+        // Note
+        var title = L.control({position: 'bottomleft'});
+        title.onAdd = function(map) {
+            this._div = L.DomUtil.create('div', 'ctl src');
+            this.update();
+            return this._div;
+        };
+		/*
+        title.update = function(props) {
+            this._div.innerHTML = src;
+        };
+        title.addTo(map);
+		*/
+		//Add accessibility paths
+		L.geoPackageFeatureLayer([], {
+		geoPackageUrl: './paths/HHDH-all.gpkg',
+		layer: 'HHDH',
+		local: true
+		}).addTo(map);
+       
+
+        // Fit to overlay bounds (SW and NE points with (lat, lon))
+        map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
+
+        </script>
+
+        </body>
+        </html>
+
+        
