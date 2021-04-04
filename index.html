@@ -47,7 +47,7 @@
 
         // Overlay layers (TMS)
         var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true, 
-			opacity: 0, 
+			opacity: 1, 
 			attribution: "",
 			maxNativeZoom: 24,
 			maxZoom: 34
@@ -56,7 +56,7 @@
         // Map
         var map = L.map('map', {
             center: [40.44253, -79.94333],
-			opacity: 0,
+			opacity: 1,
             zoom: 17,
             minZoom: 0,
             maxZoom: 24,
