@@ -193,7 +193,7 @@
 	//Add building names
 	L.geoPackageFeatureLayer([], {
 		geoPackageUrl: './overlays/building_labels.gpkg',
-		layerName: 'building_labels'
+		layerName: 'building_labels',
 		pointToLayer: function (geoJsonPoint, latlng) {
 			marker = L.marker(latlng).bindTooltip(geoJsonPoint.properties.name);
 			return marker;
