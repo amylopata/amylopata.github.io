@@ -61,6 +61,9 @@
 				.leaflet-tooltip-right:before {
 					border: none !important;
 				}
+				.legend img {
+					width: 16px;
+				}
             </style>
 
         </head>
@@ -135,6 +138,24 @@
 			<div>
 			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
 			<label for="data">Show slope data</label>
+			</div>
+			<div class="legend">
+			<div>
+			<img src="/icons/accessible_with_automatic_door.png"/>
+			<p>Accessible with automatic door</p>
+			</div>
+			<div>
+			<img src="/icons/accessible_without_automatic_door.png"/>
+			<p>Accessible without automatic door</p>
+			</div>
+			<div>
+			<img src="/icons/inaccessible.png"/>
+			<p>Inaccessible</p>
+			</div>
+			<div>
+			<img src="/icons/unknown.png"/>
+			<p>Unknown</p>
+			</div>
 			</div>
 			<div>
 			<p>These routes were generated automatically using AI.  As a result the classification of routes as accessible or inaccessible is not guaranteed to be accurate.</p>
