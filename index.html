@@ -9,6 +9,7 @@
 			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 			<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 			<script src="https://unpkg.com/@ngageoint/leaflet-geopackage@3.0.3/dist/leaflet-geopackage.min.js"></script>
+			<script<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
 				
             <style>
                 body { margin:0; padding:0; }
@@ -132,7 +133,7 @@
 			<label for="all">Show shortest overall path</label>
 			</div>
 			<div>
-			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
+			<input type="checkbox" name="accessible" id="accessible" onchange="showroute();">
 			<label for="accessible">Show shortest accessible path</label>
 			</div>
 			<div>
@@ -164,6 +165,34 @@
         <div id="map"></div>
 
         <script>
+		function loadpath(layerfile) {
+			L.geoPackageFeatureLayer([], {
+				geoPackageUrl: './paths/' + layerfile,
+				layerName: 'shortest-path'
+			}).addTo(map);
+		}
+		
+		function showroute(e) {
+				origin = $('#origin').val();
+				destination = $('#destination').val();
+				basename = origin + destination + '-';
+				overall = $('#all').prop("checked");
+				accessible = $('#all').prop("checked");
+				if (overall) {
+					layerfile = basename + '-all.gpkg';
+					loadpath(layerfile);	   
+				}
+				if (accessible) {
+					layerfile = basename + '-access.gpkg';
+					loadpath(layerfile);
+				}
+		}
+		
+		$('#all').onchange = showroute;
+		$('#accessible').onchange = showroute;
+		$('#slope').onchange = showroute;
+		
+		
         /* **** Leaflet **** */
 
         // Base layers
@@ -270,12 +299,7 @@
 		}
 	}).addTo(map);
 	
-	//Add accessibility paths
-	L.geoPackageFeatureLayer([], {
-	geoPackageUrl: './paths/HHDH-all.gpkg',
-	layerName: 'HHDH-all'
-	}).addTo(map);
-       
+	
         // Fit to overlay bounds (SW and NE points with (lat, lon))
         map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
 
