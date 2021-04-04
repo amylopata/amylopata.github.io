@@ -215,7 +215,7 @@
 	geoPackageUrl: './overlays/all_building_entrances.gpkg',
 	layerName: 'all_building_entrances',
 	pointToLayer: function (geoJsonPoint, latlng) {
-			switch(geoJsonPoint.properties.name) {
+			switch(geoJsonPoint.properties.entrance) {
 				case 'accessible':
 					iconpath = 'icons/accessible_without_automatic_door.png';
 					break;
@@ -228,7 +228,10 @@
 				default:
 				iconpath = 'icons/unknown.png';
 			}
-			icon = L.icon({iconUrl: iconpath});
+			icon = L.icon({
+				iconUrl: iconpath,
+				iconSize: [16, 16],	
+				});
 			marker = L.marker(latlng, {
 				icon: icon
 				}
