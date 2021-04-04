@@ -213,7 +213,28 @@
 	//Add building entrances
 	L.geoPackageFeatureLayer([], {
 	geoPackageUrl: './overlays/all_building_entrances.gpkg',
-	layerName: 'all_building_entrances'
+	layerName: 'all_building_entrances',
+	pointToLayer: function (geoJsonPoint, latlng) {
+			switch(geoJsonPoint.properties.name) {
+				case 'accessible':
+					iconpath = 'icons/accessible_without_automatic_door.png';
+					break;
+				case 'inaccessible':
+					iconpath = 'icons/inaccessible.png';
+					break;
+				case 'automatic':				
+					iconpath = 'icons/accessible_with_automatic_door.png';
+					break;
+				default:
+				iconpath = 'icons/unknown.png';
+			}
+			icon = L.icon({iconUrl: iconpath});
+			marker = L.marker(latlng, {
+				icon: icon
+				}
+			);
+			return marker;
+		}
 	}).addTo(map);
 	
 	//Add accessibility paths
