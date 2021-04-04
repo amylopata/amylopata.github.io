@@ -29,12 +29,21 @@
                 .src {
                     font-size: 10pt;
                 }
-
+				#control {
+					position: absolute;
+					z-index: 9;
+					top: 5px;
+					right: 5px;
+					background-color: beige;
+					border-color: black;
+					border-style: double;
+				}
             </style>
 
         </head>
         <body>
 		<div id="control" style="display:block; float:right">
+			<div>
 			<label for="origin">From:</label>
 			<select name="origin" id="origin" onchange="showroute();">
 				<option value="BH">Baker Hall</option> 
@@ -91,13 +100,22 @@
 				<option value="WEH">Wean Hall</option> 
 				<option value="WWG">West Wing</option>
 			</select>
-			<label for="accessible">Show shortest path:</label>
+			</div>
+			<div>
 			<input type="checkbox" name="all" id="all" onchange="showroute();">
-			<label for="accessible">Show shortest accessible path:</label>
-			<input type="checkbox" name="accessible" id="accessible" onchange="showroute();">
-			<label for="data">Show slope data:</label>
+			<label for="all">Show shortest path</label>
+			</div>
+			<div>
 			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
+			<label for="accessible">Show shortest accessible path</label>
+			</div>
+			<div>
+			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
+			<label for="data">Show slope data</label>
+			</div>
+			<div>
 			<p>These routes were generated automatically using AI.  As a result the classification of routes and accessible or inaccessible is not guaranteed to be accurate"</p>
+			</div>
 		</div>
         <div id="map"></div>
 
