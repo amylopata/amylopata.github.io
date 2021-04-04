@@ -195,7 +195,11 @@
 		geoPackageUrl: './overlays/building_labels.gpkg',
 		layerName: 'building_labels',
 		pointToLayer: function (geoJsonPoint, latlng) {
-			marker = L.marker(latlng).bindTooltip(geoJsonPoint.properties.name);
+			tooltip = L.tooltip({
+				permanent:true	
+			}
+			tooltip.setTooltipContent(geoJsonPoint.properties.name);
+			marker = L.marker(latlng, {opacity: 0}).bindTooltip(tooltip);
 			return marker;
 		}
 	}).addTo(map);
