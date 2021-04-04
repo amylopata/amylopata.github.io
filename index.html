@@ -52,6 +52,12 @@
 				#control div {
 					padding: 5px;
 				}
+				.leaflet-tooltip-top:before, 
+				.leaflet-tooltip-bottom:before, 
+				.leaflet-tooltip-left:before, 
+				.leaflet-tooltip-right:before {
+					border: none !important;
+				}
             </style>
 
         </head>
@@ -117,7 +123,7 @@
 			</div>
 			<div>
 			<input type="checkbox" name="all" id="all" onchange="showroute();">
-			<label for="all">Show shortest path</label>
+			<label for="all">Show shortest overall path</label>
 			</div>
 			<div>
 			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
