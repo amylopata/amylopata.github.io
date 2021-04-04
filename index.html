@@ -89,7 +89,7 @@
 			<label for="destination">To:</label>
 			<select name="destination" id="destination" onchange="showroute();">
 				<option value="BH">Baker Hall</option> 
-				<option value="CUC">Cohon University Center</option> 
+				<option selected value="CUC">Cohon University Center</option> 
 				<option value="CIC">Collaborative Innovation Center</option> 
 				<option value="CFA">College of Fine Arts</option> 
 				<option value="CYH">Cyert Hall</option>
@@ -128,7 +128,7 @@
 			<label for="data">Show slope data</label>
 			</div>
 			<div>
-			<p>These routes were generated automatically using AI.  As a result the classification of routes and accessible or inaccessible is not guaranteed to be accurate"</p>
+			<p>These routes were generated automatically using AI.  As a result the classification of routes as accessible or inaccessible is not guaranteed to be accurate.</p>
 			</div>
 		</div>
         <div id="map"></div>
@@ -192,8 +192,12 @@
 	*/
 	//Add building names
 	L.geoPackageFeatureLayer([], {
-	geoPackageUrl: './overlays/building_labels.gpkg',
-	layerName: 'building_labels'
+		geoPackageUrl: './overlays/building_labels.gpkg',
+		layerName: 'building_labels'
+		pointToLayer: function (geoJsonPoint, latlng) {
+			marker = L.marker(latlng).bindTooltip(geoJsonPoint.properties.name);
+			return marker;
+		}
 	}).addTo(map);
     
 	//Add building entrances
