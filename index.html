@@ -198,8 +198,8 @@
 			tooltip = L.tooltip({
 				permanent:true	
 			});
-			tooltip.setTooltipContent(geoJsonPoint.properties.name);
 			marker = L.marker(latlng, {opacity: 0}).bindTooltip(tooltip);
+			marker.setTooltipContent(geoJsonPoint.properties.name);
 			return marker;
 		}
 	}).addTo(map);
