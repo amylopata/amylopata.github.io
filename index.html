@@ -66,7 +66,7 @@
         var basemaps = {"OpenStreetMap": osm}
         var overlaymaps = {"Layer": lyr}
 		lyr.addTo(map);
-
+	/*
         // Title
         var title = L.control();
         title.onAdd = function(map) {
@@ -86,17 +86,19 @@
             this.update();
             return this._div;
         };
-		/*
+
         title.update = function(props) {
             this._div.innerHTML = src;
         };
-	*/
+	
         title.addTo(map);
-		//Add accessibility paths
-		L.geoPackageFeatureLayer([], {
-		geoPackageUrl: './paths/HHDH-all.gpkg',
-		layer: 'HHDH'
-		}).addTo(map);
+	
+	*/
+	//Add accessibility paths
+	L.geoPackageFeatureLayer([], {
+	geoPackageUrl: './paths/HHDH-all.gpkg',
+	layer: 'HHDH'
+	}).addTo(map);
        
         // Fit to overlay bounds (SW and NE points with (lat, lon))
         map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
