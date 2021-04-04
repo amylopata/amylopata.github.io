@@ -52,6 +52,9 @@
 				#control div {
 					padding: 5px;
 				}
+				.leaflet-tooltip {
+					font-size: 8pt;
+				}
 				.leaflet-tooltip-top:before, 
 				.leaflet-tooltip-bottom:before, 
 				.leaflet-tooltip-left:before, 
@@ -202,7 +205,8 @@
 		layerName: 'building_labels',
 		pointToLayer: function (geoJsonPoint, latlng) {
 			tooltip = L.tooltip({
-				permanent:true	
+				permanent:true,
+				direction: 'center',
 			});
 			marker = L.marker(latlng, {opacity: 0}).bindTooltip(tooltip);
 			marker.setTooltipContent(geoJsonPoint.properties.name);
