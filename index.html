@@ -34,7 +34,71 @@
 
         </head>
         <body>
-
+		<div id="control" style="display:block, float:right">
+			<label for="origin">From:</label>
+			<select name="origin" id="origin" onchange="showroute();">
+				<option value="BH">Baker Hall</option> 
+				<option value="CUC">Cohon University Center</option> 
+				<option value="CIC">Collaborative Innovation Center</option> 
+				<option value="CFA">College of Fine Arts</option> 
+				<option value="CYH">Cyert Hall</option>
+				<option value="DH">Doherty Hall</option> 
+				<option value="DON">Donner Hall</option> 
+				<option value="ECG">East Campus Garage</option> 
+				<option value="GHC">Gates Hillman Center</option> 
+				<option value="HOA">Hall of Arts</option>
+				<option value="HBH">Hamburg Hall</option> 
+				<option value="HH">Hamerschlag Hall</option> 
+				<option value="HL">Hunt Library</option> 
+				<option value="MM">Margaret Morrison Carnegie Hall</option> 
+				<option value="NSH">Newell-Simon Hall</option> 
+				<option value="PCA">Purnell Center</option> 
+				<option value="PH">Porter Hall</option> 
+				<option value="POS">Posner Hall</option> 
+				<option value="REH">Roberts Engineering Hall</option> 
+				<option value="RES">Resnik House</option> 
+				<option value="SC">Scott Hall</option> 
+				<option value="EDS">Smith Hall</option> 
+				<option value="WH">Warner Hall</option> 
+				<option value="WEH">Wean Hall</option> 
+				<option value="WWG">West Wing</option>
+			</select>
+			<label for="destination">To:</label>
+			<select name="destination" id="destination" onchange="showroute();">
+				<option value="BH">Baker Hall</option> 
+				<option value="CUC">Cohon University Center</option> 
+				<option value="CIC">Collaborative Innovation Center</option> 
+				<option value="CFA">College of Fine Arts</option> 
+				<option value="CYH">Cyert Hall</option>
+				<option value="DH">Doherty Hall</option> 
+				<option value="DON">Donner Hall</option> 
+				<option value="ECG">East Campus Garage</option> 
+				<option value="GHC">Gates Hillman Center</option> 
+				<option value="HOA">Hall of Arts</option>
+				<option value="HBH">Hamburg Hall</option> 
+				<option value="HH">Hamerschlag Hall</option> 
+				<option value="HL">Hunt Library</option> 
+				<option value="MM">Margaret Morrison Carnegie Hall</option> 
+				<option value="NSH">Newell-Simon Hall</option> 
+				<option value="PCA">Purnell Center</option> 
+				<option value="PH">Porter Hall</option> 
+				<option value="POS">Posner Hall</option> 
+				<option value="REH">Roberts Engineering Hall</option> 
+				<option value="RES">Resnik House</option> 
+				<option value="SC">Scott Hall</option> 
+				<option value="EDS">Smith Hall</option> 
+				<option value="WH">Warner Hall</option> 
+				<option value="WEH">Wean Hall</option> 
+				<option value="WWG">West Wing</option>
+			</select>
+			<label for="accessible">Show shortest path:</label>
+			<input type="checkbox" name="all" id="all" onchange="showroute();">
+			<label for="accessible">Show shortest accessible path:</label>
+			<input type="checkbox" name="accessible" id="accessible" onchange="showroute();">
+			<label for="data">Show slope data:</label>
+			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
+			<p>These routes were generated automatically using AI.  As a result the classification of routes and accessible or inaccessible is not guaranteed to be accurate"</p>
+		</div>
         <div id="map"></div>
 
         <script>
@@ -94,6 +158,18 @@
         title.addTo(map);
 	
 	*/
+	//Add building names
+	L.geoPackageFeatureLayer([], {
+	geoPackageUrl: './overlays/building_labels.gpkg',
+	layerName: 'building_labels'
+	}).addTo(map);
+    
+	//Add building entrances
+	L.geoPackageFeatureLayer([], {
+	geoPackageUrl: './overlays/all_building_entrances.gpkg',
+	layerName: 'all_building_entrances'
+	}).addTo(map);
+	
 	//Add accessibility paths
 	L.geoPackageFeatureLayer([], {
 	geoPackageUrl: './paths/HHDH-all.gpkg',
