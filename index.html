@@ -261,6 +261,9 @@ L.geoPackageFeatureLayer([], {
 	geoPackageUrl: './overlays/building_labels.gpkg',
 	layerName: 'building_labels',
 	pointToLayer: function (geoJsonPoint, latlng) {
+		var tooltop;
+		var nullIcon;
+		var marker;
 		tooltip = L.tooltip({
 			permanent:true,
 			direction: 'center',
@@ -281,6 +284,9 @@ L.geoPackageFeatureLayer([], {
 geoPackageUrl: './overlays/all_building_entrances.gpkg',
 layerName: 'all_building_entrances',
 pointToLayer: function (geoJsonPoint, latlng) {
+		var iconpath;
+		var icon;
+		var marker;
 		switch(geoJsonPoint.properties.entrance) {
 			case 'accessible':
 				iconpath = 'icons/accessible_without_automatic_door.png';
