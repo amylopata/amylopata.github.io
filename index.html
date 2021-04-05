@@ -64,11 +64,14 @@
 			background-position: center;
 			background-color: #333333;
 			color: transparent;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			width: 48px;
+			height: 48px;
+			z-index: 9;
 		}
-		#hamburger>a {
-			color: transparent;
-			border-radius: 4px;
-		}
+		
 		@media only screen and (max-width: 1100px) {
 			#control {
 				display: none;
@@ -218,17 +221,7 @@ var overallpath1;
 var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
-/*
-function loadpath(layerfile, color = 'red', dash = "4,4") {
-	return L.geoPackageFeatureLayer([], {
-		geoPackageUrl: './paths/' + layerfile,
-		layerName: 'shortest-path',
-		style : function(feature) {
-			return {color: color, dashArray: dash};
-		}
-	}).addTo(map);
-}
-*/
+
 function loadpath(layerfile, color = 'red', dash = "4,4") {
 	var customLayer = L.geoJson( null, {
 		style : function(feature) {
@@ -278,9 +271,14 @@ function showroute(e) {
 		}
 }
 
+function showcontrol() {
+	$('#control').show();
+}
+
 $('#all').onchange = showroute;
 $('#accessible').onchange = showroute;
 $('#slope').onchange = showroute;
+$('#hamburger').onclick = showcontrol;
 
 
 /* **** Leaflet **** */
