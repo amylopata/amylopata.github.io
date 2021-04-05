@@ -189,7 +189,7 @@ function loadpath(layerfile, color = 'red', dash = "4,4") {
 			return {color: color, dashArray: dash};
 		}
 	});
-	return omnivore.kml(layerfile, null, customLayer).addTo(map);
+	return omnivore.kml( './paths/' + layerfile, null, customLayer).addTo(map);
 }
 function clearPaths() {	
 		if (map.hasLayer(overallpath1)) {map.removeLayer(overallpath1)};
