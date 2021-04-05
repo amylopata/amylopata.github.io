@@ -171,13 +171,13 @@ var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
 
-function loadpath(layerfile, color = 'blue') {
+function loadpath(layerfile, color = 'red', dash = "4,4") {
 	try {
 		return L.geoPackageFeatureLayer([], {
 			geoPackageUrl: './paths/' + layerfile,
 			layerName: 'shortest-path',
 			style : function(feature) {
-				return {color: color};
+				return {color: color, dashArray: dash};
 			}
 		}).addTo(map);
 	}
@@ -212,9 +212,9 @@ function showroute(e) {
 		}
 		if (accessible) {
 			layerfile1 = basename1 + '-access.gpkg';
-			accessiblepath1 = loadpath(layerfile1, 'red');
+			accessiblepath1 = loadpath(layerfile1, 'blue', "");
 			layerfile2 = basename2 + '-access.gpkg';
-			accessiblepath2 = loadpath(layerfile2, 'red');
+			accessiblepath2 = loadpath(layerfile2, 'blue', "");
 		}
 }
 
