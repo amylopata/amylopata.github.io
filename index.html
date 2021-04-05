@@ -101,13 +101,13 @@
 		}
 		span.all {
 			text-decoration: underline;
-			text-decoration-color: red;
+			text-decoration-color: #EBA286;
 			text-decoration-style: dashed;
 			text-decoration-thickness: 3px;
 		}
 		span.accessible {
 			text-decoration: underline;
-			text-decoration-color: SkyBlue;
+			text-decoration-color: #87CEEB;
 			text-decoration-style: solid;
 			text-decoration-thickness: 3px;
 		}
@@ -221,7 +221,7 @@ var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
 
-function loadpath(layerfile, color = 'red', dash = "4,4") {
+function loadpath(layerfile, color = '#EBA286', dash = "4,4") {
 	var customLayer = L.geoJson( null, {
 		style : function(feature) {
 			return {color: color, dashArray: dash};
@@ -264,9 +264,9 @@ function showroute(e) {
 		}
 		if (accessible) {
 			layerfile1 = basename1 + '-access.kml';
-			accessiblepath1 = loadpath(layerfile1, 'SkyBlue', "");
+			accessiblepath1 = loadpath(layerfile1, '#87CEEB', "");
 			layerfile2 = basename2 + '-access.kml';
-			accessiblepath2 = loadpath(layerfile2, 'SkyBlue', "");
+			accessiblepath2 = loadpath(layerfile2, '#87CEEB', "");
 		}
 		if ($('#hamburger').is(":visible")) {
 			$('#control').hide();
