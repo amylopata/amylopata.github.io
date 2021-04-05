@@ -191,6 +191,10 @@ function clearPaths() {
 		if (map.hasLayer(overallpath2)) {map.removeLayer(overallpath2)};
 		if (map.hasLayer(accessiblepath1)) {map.removeLayer(accessiblepath1)};
 		if (map.hasLayer(accessiblepath2)) {map.removeLayer(accessiblepath2)};
+		overallpath1 = null;
+		overallpath2 = null;
+		accessiblepath1 = null;
+		accessiblepath2 = null;
 }
 
 function showroute(e) {
