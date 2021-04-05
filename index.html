@@ -185,15 +185,11 @@ function loadpath(layerfile, color = 'red', dash = "4,4") {
 	}
 }
 
-function clearPaths() {
-	try {
-		map.removeLayer(overallpath1);
-		map.removeLayer(overallpath2);
-		map.removeLayer(accessiblepath1);
-		map.removeLayer(accessiblepath2);
-	}
-	catch {
-	}
+function clearPaths() {	
+		if (map.hasLayer(overallpath1)) {map.removeLayer(overallpath1)};
+		if (map.hasLayer(overallpath2)) {map.removeLayer(overallpath2)};
+		if (map.hasLayer(accessiblepath1)) {map.removeLayer(accessiblepath1)};
+		if (map.hasLayer(accessiblepath2)) {map.removeLayer(accessiblepath2)};
 }
 
 function showroute(e) {
