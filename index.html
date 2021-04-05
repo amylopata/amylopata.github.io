@@ -177,9 +177,9 @@ function loadpath(layerfile, color = 'red', dash = "4,4") {
 		return L.geoPackageFeatureLayer([], {
 			geoPackageUrl: './paths/' + layerfile,
 			layerName: 'shortest-path',
-			style : function(feature) {
+			/*style : function(feature) {
 				return {color: color, dashArray: dash};
-			}
+			}*/
 		}).addTo(map);
 	}
 	catch (err) {
