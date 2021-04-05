@@ -269,6 +269,9 @@ function showroute(e) {
 			layerfile2 = basename2 + '-access.kml';
 			accessiblepath2 = loadpath(layerfile2, 'blue', "");
 		}
+		if ($('#hamburger').is(":visible")) {
+			$('#control').hide();
+		}
 }
 
 function showcontrol() {
