@@ -172,20 +172,28 @@ var overallpath2;
 var accessiblepath2;
 
 function loadpath(layerfile, color = 'blue') {
-	return L.geoPackageFeatureLayer([], {
-		geoPackageUrl: './paths/' + layerfile,
-		layerName: 'shortest-path',
-		style : function(feature) {
-			return {color: color};
-		}
-	}).addTo(map);
+	try {
+		return L.geoPackageFeatureLayer([], {
+			geoPackageUrl: './paths/' + layerfile,
+			layerName: 'shortest-path',
+			style : function(feature) {
+				return {color: color};
+			}
+		}).addTo(map);
+	}
+	catch (err) {
+	}
 }
 
 function clearPaths() {
-	map.removeLayer(overallpath1);
-	map.removeLayer(overallpath2);
-	map.removeLayer(accessiblepath1);
-	map.removeLayer(accessiblepath2);
+	try {
+		map.removeLayer(overallpath1);
+		map.removeLayer(overallpath2);
+		map.removeLayer(accessiblepath1);
+		map.removeLayer(accessiblepath2);
+	}
+	catch {
+	}
 }
 
 function showroute(e) {
