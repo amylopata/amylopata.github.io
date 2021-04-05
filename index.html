@@ -169,23 +169,29 @@
 		function loadpath(layerfile) {
 			L.geoPackageFeatureLayer([], {
 				geoPackageUrl: './paths/' + layerfile,
-				/*layerName: 'shortest-path'*/
+				layerName: 'shortest-path'
 			}).addTo(map);
 		}
 		
 		function showroute(e) {
 				origin = $('#origin').val();
 				destination = $('#destination').val();
-				basename = origin + destination;
+				basename1 = origin + destination;
+				basename2 = destination + origin;
 				overall = $('#all').prop("checked");
 				accessible = $('#all').prop("checked");
 				if (overall) {
-					layerfile = basename + '-all.gpkg';
-					loadpath(layerfile);	   
+					layerfile1 = basename1 + '-all.gpkg';
+					loadpath(layerfile1);	   
+					layerfile2 = basename2 + '-all.gpkg';
+					loadpath(layerfile2);	   
+					
 				}
 				if (accessible) {
-					layerfile = basename + '-access.gpkg';
-					loadpath(layerfile);
+					layerfile1 = basename1 + '-access.gpkg';
+					loadpath(layerfile1);
+					layerfile2 = basename2 + '-access.gpkg';
+					loadpath(layerfile2);
 				}
 		}
 		
