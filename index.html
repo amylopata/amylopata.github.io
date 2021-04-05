@@ -276,12 +276,12 @@ function showroute(e) {
 function showcontrol() {
 	$('#control').show();
 }
-
-$('#all').onchange = showroute;
-$('#accessible').onchange = showroute;
-$('#slope').onchange = showroute;
-$('#hamburger').click = showcontrol;
-
+$(document).ready(function(){
+	$('#all').onchange = showroute;
+	$('#accessible').onchange = showroute;
+	$('#slope').onchange = showroute;
+	$('#hamburger').click = showcontrol;
+);
 
 /* **** Leaflet **** */
 
