@@ -173,17 +173,13 @@ var overallpath2;
 var accessiblepath2;
 
 function loadpath(layerfile, color = 'red', dash = "4,4") {
-	try {
-		return L.geoPackageFeatureLayer([], {
-			geoPackageUrl: './paths/' + layerfile,
-			layerName: 'shortest-path',
-			/*style : function(feature) {
-				return {color: color, dashArray: dash};
-			}*/
-		}).addTo(map);
-	}
-	catch (err) {
-	}
+	return L.geoPackageFeatureLayer([], {
+		geoPackageUrl: './paths/' + layerfile,
+		layerName: 'shortest-path',
+		style : function(feature) {
+			return {color: color, dashArray: dash};
+		}
+	}).addTo(map);
 }
 
 function clearPaths() {	
