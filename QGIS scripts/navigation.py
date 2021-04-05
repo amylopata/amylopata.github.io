@@ -286,7 +286,7 @@ class AccessibleNavigationProcessingAlgorithm(QgsProcessingAlgorithm):
                         # QgsMessageLog.logMessage("overall best paths " + str(all_cost_dict), "Processing", level = 1)
                     # for accessible navigation, check that neither endpoint has an inaccessible entrance type
                     tmp.close()
-                    if not pointA.attribute("building") == "inaccessible" and not pointB.attribute("building") == "inaccessible":
+                    if not pointA.attribute("entrance") == "inaccessible" and not pointB.attribute("entrance") == "inaccessible":
                         outputfile = out_dir + "\\" + buildingA + buildingB + "-accessible.gpkg"
                         tmp = tempfile.NamedTemporaryFile(dir=out_dir)
                         #QgsMessageLog.logMessage("accessible out file:" + str(outputfile), "Processing", level = 1)
@@ -300,11 +300,23 @@ class AccessibleNavigationProcessingAlgorithm(QgsProcessingAlgorithm):
         QgsMessageLog.logMessage("overall best paths " + str(all_cost_dict), "Processing", level = 1)
         # QgsProject.instance().removeAllMapLayers()
         for key in access_cost_dict:
-            outputfile = out_dir + "\\" + key + "-access.gpkg"
-            shutil.move(access_cost_dict[key][1] + ".gpkg", outputfile)
+            outputfile = out_dir + "\\" + key + "-access.kml"
+            input = all_cost_dict[key][1] + ".gpkg"
+            result = processing.run('native:reprojectlayer',
+            {'INPUT' : input, 
+              'OPERATION' : '+proj=noop', 
+              'OUTPUT': outputfile,
+              'TARGET_CRS' : QgsCoordinateReferenceSystem('ESRI:102729') 
+            })
         for key in all_cost_dict:
-            outputfile = out_dir + "\\" + key + "-all.gpkg"
-            shutil.move(all_cost_dict[key][1] + ".gpkg", outputfile)
-
+            outputfile = out_dir + "\\" + key + "-all.kml"
+            input = all_cost_dict[key][1] + ".gpkg"
+            result = processing.run('native:reprojectlayer',
+            {'INPUT' : input, 
+              'OPERATION' : '+proj=noop', 
+              'OUTPUT': outputfile,
+              'TARGET_CRS' : QgsCoordinateReferenceSystem('ESRI:102729') 
+            })
+    
           
         return {self.OUTPUT: all_cost_dict }
