@@ -174,8 +174,8 @@ var accessiblepath2;
 function loadpath(layerfile, color = 'blue') {
 	return L.geoPackageFeatureLayer([], {
 		geoPackageUrl: './paths/' + layerfile,
-		layerName: 'shortest-path'
-		style = function(feature) {
+		layerName: 'shortest-path',
+		style : function(feature) {
 			return {color: color};
 		}
 	}).addTo(map);
