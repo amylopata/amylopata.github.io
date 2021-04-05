@@ -11,6 +11,7 @@
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/@ngageoint/leaflet-geopackage@3.0.3/dist/leaflet-geopackage.js"></script>
 	<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+	<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
 		
 	<style>
 		body { margin:0; padding:0; }
@@ -171,7 +172,7 @@ var overallpath1;
 var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
-
+/*
 function loadpath(layerfile, color = 'red', dash = "4,4") {
 	return L.geoPackageFeatureLayer([], {
 		geoPackageUrl: './paths/' + layerfile,
@@ -181,7 +182,15 @@ function loadpath(layerfile, color = 'red', dash = "4,4") {
 		}
 	}).addTo(map);
 }
-
+*/
+function loadpath(layerfile, color = 'red', dash = "4,4") {
+	var customLayer = L.geoJson( null, {
+		style : function(feature) {
+			return {color: color, dashArray: dash};
+		}
+	});
+	return omnivore.kml(layerfile, null, customLayer).addTo(map);
+}
 function clearPaths() {	
 		if (map.hasLayer(overallpath1)) {map.removeLayer(overallpath1)};
 		if (map.hasLayer(overallpath2)) {map.removeLayer(overallpath2)};
@@ -210,15 +219,15 @@ function showroute(e) {
 		overall = $('#all').prop("checked");
 		accessible = $('#accessible').prop("checked");
 		if (overall) {
-			layerfile1 = basename1 + '-all.gpkg';
+			layerfile1 = basename1 + '-all.kml';
 			overallpath1 = loadpath(layerfile1);	   
-			layerfile2 = basename2 + '-all.gpkg';
+			layerfile2 = basename2 + '-all.kml';
 			overallpath2 = loadpath(layerfile2);	   			
 		}
 		if (accessible) {
-			layerfile1 = basename1 + '-access.gpkg';
+			layerfile1 = basename1 + '-access.kml';
 			accessiblepath1 = loadpath(layerfile1, 'blue', "");
-			layerfile2 = basename2 + '-access.gpkg';
+			layerfile2 = basename2 + '-access.kml';
 			accessiblepath2 = loadpath(layerfile2, 'blue', "");
 		}
 }
