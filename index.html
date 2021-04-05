@@ -1,318 +1,305 @@
 <!DOCTYPE html>
 <!--Comment-->
-        <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-            <title>Carnegie Mellon Accessibility Map</title>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+	<title>Carnegie Mellon Accessibility Map</title>
 
-            <!-- Leaflet -->
-			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-			<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-			<script src="https://unpkg.com/@ngageoint/leaflet-geopackage@3.0.3/dist/leaflet-geopackage.min.js"></script>
-			<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-				
-            <style>
-                body { margin:0; padding:0; }
-                body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet MS", "Ubuntu", Serif; font-size: 11pt; }
-                #map { 
-					position:absolute; 
-					top:0; 
-					bottom:0; 
-					width:100%; /* full size */
-					z-index: 0;
-				} 
-                .ctl {
-                    padding: 2px 10px 2px 10px;
-                    background: white;
-                    background: rgba(255,255,255,0.9);
-                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-                    border-radius: 5px;
-                    text-align: right;
-                }
-                .title {
-                    font-size: 18pt;
-                    font-weight: bold;
-                }
-                .src {
-                    font-size: 10pt;
-                }
-				#control {
-					position: absolute;
-					z-index: 9;
-					top: 5px;
-					right: 5px;
-					background-color: beige;
-					border-color: black;
-					border-style: double;
-					width:min-content;
-					padding: 10px;
-				}
-				#control p {
-					font-size: 12px;
-				}
-				#control div {
-					padding: 5px;
-				}
-				.leaflet-tooltip {
-					font-size: 8pt;
-				}
-				.leaflet-tooltip-top:before, 
-				.leaflet-tooltip-bottom:before, 
-				.leaflet-tooltip-left:before, 
-				.leaflet-tooltip-right:before {
-					border: none !important;
-				}
-				.legend img {
-					width: 16px;
-				}
-            </style>
-
-        </head>
-        <body>
-		<div id="control">
-			<div>
-			<label for="origin">From:</label>
-			<select name="origin" id="origin" onchange="showroute();">
-				<option value="BH">Baker Hall</option> 
-				<option value="CUC">Cohon University Center</option> 
-				<option value="CIC">Collaborative Innovation Center</option> 
-				<option value="CFA">College of Fine Arts</option> 
-				<option value="CYH">Cyert Hall</option>
-				<option value="DH">Doherty Hall</option> 
-				<option value="DON">Donner Hall</option> 
-				<option value="ECG">East Campus Garage</option> 
-				<option value="GHC">Gates Hillman Center</option> 
-				<option value="HOA">Hall of Arts</option>
-				<option value="HBH">Hamburg Hall</option> 
-				<option value="HH">Hamerschlag Hall</option> 
-				<option value="HL">Hunt Library</option> 
-				<option value="MM">Margaret Morrison Carnegie Hall</option> 
-				<option value="NSH">Newell-Simon Hall</option> 
-				<option value="PCA">Purnell Center</option> 
-				<option value="PH">Porter Hall</option> 
-				<option value="POS">Posner Hall</option> 
-				<option value="REH">Roberts Engineering Hall</option> 
-				<option value="RES">Resnik House</option> 
-				<option value="SC">Scott Hall</option> 
-				<option value="EDS">Smith Hall</option> 
-				<option value="WH">Warner Hall</option> 
-				<option value="WEH">Wean Hall</option> 
-				<option value="WWG">West Wing</option>
-			</select>
-			<label for="destination">To:</label>
-			<select name="destination" id="destination" onchange="showroute();">
-				<option value="BH">Baker Hall</option> 
-				<option selected value="CUC">Cohon University Center</option> 
-				<option value="CIC">Collaborative Innovation Center</option> 
-				<option value="CFA">College of Fine Arts</option> 
-				<option value="CYH">Cyert Hall</option>
-				<option value="DH">Doherty Hall</option> 
-				<option value="DON">Donner Hall</option> 
-				<option value="ECG">East Campus Garage</option> 
-				<option value="GHC">Gates Hillman Center</option> 
-				<option value="HOA">Hall of Arts</option>
-				<option value="HBH">Hamburg Hall</option> 
-				<option value="HH">Hamerschlag Hall</option> 
-				<option value="HL">Hunt Library</option> 
-				<option value="MM">Margaret Morrison Carnegie Hall</option> 
-				<option value="NSH">Newell-Simon Hall</option> 
-				<option value="PCA">Purnell Center</option> 
-				<option value="PH">Porter Hall</option> 
-				<option value="POS">Posner Hall</option> 
-				<option value="REH">Roberts Engineering Hall</option> 
-				<option value="RES">Resnik House</option> 
-				<option value="SC">Scott Hall</option> 
-				<option value="EDS">Smith Hall</option> 
-				<option value="WH">Warner Hall</option> 
-				<option value="WEH">Wean Hall</option> 
-				<option value="WWG">West Wing</option>
-			</select>
-			</div>
-			<div>
-			<input type="checkbox" name="all" id="all" onchange="showroute();">
-			<label for="all">Show shortest overall path</label>
-			</div>
-			<div>
-			<input type="checkbox" name="accessible" id="accessible" onchange="showroute();">
-			<label for="accessible">Show shortest accessible path</label>
-			</div>
-			<div>
-			<input type="checkbox" name="slope" id="slope" onchange="showroute();">
-			<label for="data">Show slope data</label>
-			</div>
-			<div class="legend">
-			<div>
-			<img src="/icons/accessible_with_automatic_door.png"/>
-			<span>Accessible with automatic door</span>
-			</div>
-			<div>
-			<img src="/icons/accessible_without_automatic_door.png"/>
-			<span>Accessible - no automatic door</span>
-			</div>
-			<div>
-			<img src="/icons/inaccessible.png"/>
-			<span>Inaccessible</span>
-			</div>
-			<div>
-			<img src="/icons/unknown.png"/>
-			<span>Unknown</span>
-			</div>
-			</div>
-			<div>
-			<p>These routes were generated automatically using AI.  As a result the classification of routes as accessible or inaccessible is not guaranteed to be accurate.</p>
-			</div>
-		</div>
-        <div id="map"></div>
-
-        <script>
-		function loadpath(layerfile) {
-			L.geoPackageFeatureLayer([], {
-				geoPackageUrl: './paths/' + layerfile,
-				layerName: 'shortest-path'
-			}).addTo(map);
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/@ngageoint/leaflet-geopackage@3.0.3/dist/leaflet-geopackage.min.js"></script>
+	<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+		
+	<style>
+		body { margin:0; padding:0; }
+		body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet MS", "Ubuntu", Serif; font-size: 11pt; }
+		#map { 
+			position:absolute; 
+			top:0; 
+			bottom:0; 
+			width:100%; /* full size */
+			z-index: 0;
+		} 
+		.ctl {
+			padding: 2px 10px 2px 10px;
+			background: white;
+			background: rgba(255,255,255,0.9);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			text-align: right;
 		}
-		
-		function showroute(e) {
-				origin = $('#origin').val();
-				destination = $('#destination').val();
-				basename1 = origin + destination;
-				basename2 = destination + origin;
-				overall = $('#all').prop("checked");
-				accessible = $('#all').prop("checked");
-				if (overall) {
-					layerfile1 = basename1 + '-all.gpkg';
-					loadpath(layerfile1);	   
-					layerfile2 = basename2 + '-all.gpkg';
-					loadpath(layerfile2);	   
-					
-				}
-				if (accessible) {
-					layerfile1 = basename1 + '-access.gpkg';
-					loadpath(layerfile1);
-					layerfile2 = basename2 + '-access.gpkg';
-					loadpath(layerfile2);
-				}
+		.title {
+			font-size: 18pt;
+			font-weight: bold;
 		}
-		
-		$('#all').onchange = showroute;
-		$('#accessible').onchange = showroute;
-		$('#slope').onchange = showroute;
-		
-		
-        /* **** Leaflet **** */
+		.src {
+			font-size: 10pt;
+		}
+		#control {
+			position: absolute;
+			z-index: 9;
+			top: 5px;
+			right: 5px;
+			background-color: beige;
+			border-color: black;
+			border-style: double;
+			width:min-content;
+			padding: 10px;
+		}
+		#control p {
+			font-size: 12px;
+		}
+		#control div {
+			padding: 5px;
+		}
+		.leaflet-tooltip {
+			font-size: 8pt;
+		}
+		.leaflet-tooltip-top:before, 
+		.leaflet-tooltip-bottom:before, 
+		.leaflet-tooltip-left:before, 
+		.leaflet-tooltip-right:before {
+			border: none !important;
+		}
+		.legend img {
+			width: 16px;
+		}
+	</style>
 
-        // Base layers
-        //  .. OpenStreetMap
-        var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+</head>
+<body>
+<div id="control">
+	<div>
+	<label for="origin">From:</label>
+	<select name="origin" id="origin" onchange="showroute();">
+		<option value="BH">Baker Hall</option> 
+		<option value="CUC">Cohon University Center</option> 
+		<option value="CIC">Collaborative Innovation Center</option> 
+		<option value="CFA">College of Fine Arts</option> 
+		<option value="CYH">Cyert Hall</option>
+		<option value="DH">Doherty Hall</option> 
+		<option value="DON">Donner Hall</option> 
+		<option value="ECG">East Campus Garage</option> 
+		<option value="GHC">Gates Hillman Center</option> 
+		<option value="HOA">Hall of Arts</option>
+		<option value="HBH">Hamburg Hall</option> 
+		<option value="HH">Hamerschlag Hall</option> 
+		<option value="HL">Hunt Library</option> 
+		<option value="MM">Margaret Morrison Carnegie Hall</option> 
+		<option value="NSH">Newell-Simon Hall</option> 
+		<option value="PCA">Purnell Center</option> 
+		<option value="PH">Porter Hall</option> 
+		<option value="POS">Posner Hall</option> 
+		<option value="REH">Roberts Engineering Hall</option> 
+		<option value="RES">Resnik House</option> 
+		<option value="SC">Scott Hall</option> 
+		<option value="EDS">Smith Hall</option> 
+		<option value="WH">Warner Hall</option> 
+		<option value="WEH">Wean Hall</option> 
+		<option value="WWG">West Wing</option>
+	</select>
+	<label for="destination">To:</label>
+	<select name="destination" id="destination" onchange="showroute();">
+		<option value="BH">Baker Hall</option> 
+		<option selected value="CUC">Cohon University Center</option> 
+		<option value="CIC">Collaborative Innovation Center</option> 
+		<option value="CFA">College of Fine Arts</option> 
+		<option value="CYH">Cyert Hall</option>
+		<option value="DH">Doherty Hall</option> 
+		<option value="DON">Donner Hall</option> 
+		<option value="ECG">East Campus Garage</option> 
+		<option value="GHC">Gates Hillman Center</option> 
+		<option value="HOA">Hall of Arts</option>
+		<option value="HBH">Hamburg Hall</option> 
+		<option value="HH">Hamerschlag Hall</option> 
+		<option value="HL">Hunt Library</option> 
+		<option value="MM">Margaret Morrison Carnegie Hall</option> 
+		<option value="NSH">Newell-Simon Hall</option> 
+		<option value="PCA">Purnell Center</option> 
+		<option value="PH">Porter Hall</option> 
+		<option value="POS">Posner Hall</option> 
+		<option value="REH">Roberts Engineering Hall</option> 
+		<option value="RES">Resnik House</option> 
+		<option value="SC">Scott Hall</option> 
+		<option value="EDS">Smith Hall</option> 
+		<option value="WH">Warner Hall</option> 
+		<option value="WEH">Wean Hall</option> 
+		<option value="WWG">West Wing</option>
+	</select>
+	</div>
+	<div>
+	<input type="checkbox" checked name="all" id="all" onchange="showroute();">
+	<label for="all">Show shortest overall path</label>
+	</div>
+	<div>
+	<input type="checkbox" checked name="accessible" id="accessible" onchange="showroute();">
+	<label for="accessible">Show shortest accessible path</label>
+	</div>
+	<div>
+	<input type="checkbox" name="slope" id="slope" onchange="showroute();">
+	<label for="data">Show slope data</label>
+	</div>
+	<div class="legend">
+	<div>
+	<img src="/icons/accessible_with_automatic_door.png"/>
+	<span>Accessible with automatic door</span>
+	</div>
+	<div>
+	<img src="/icons/accessible_without_automatic_door.png"/>
+	<span>Accessible - no automatic door</span>
+	</div>
+	<div>
+	<img src="/icons/inaccessible.png"/>
+	<span>Inaccessible</span>
+	</div>
+	<div>
+	<img src="/icons/unknown.png"/>
+	<span>Unknown</span>
+	</div>
+	</div>
+	<div>
+	<p>These routes were generated automatically using AI.  As a result the classification of routes as accessible or inaccessible is not guaranteed to be accurate.</p>
+	</div>
+</div>
+<div id="map"></div>
 
+<script>
+var overallpath1;
+var accessiblepath1;
+var overallpath2;
+var accessiblepath2;
 
-        // Overlay layers (TMS)
-        var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true, 
-			opacity: 1, 
-			attribution: "",
-			maxNativeZoom: 24,
-			maxZoom: 34
-	    });
-
-        // Map
-        var map = L.map('map', {
-            center: [40.44253, -79.94333],
-			opacity: 1,
-            zoom: 17,
-            minZoom: 0,
-            maxZoom: 24,
-            layers: [osm]
-        });
-
-        var basemaps = {"OpenStreetMap": osm}
-        var overlaymaps = {"Layer": lyr}
-		lyr.addTo(map);
-	/*
-        // Title
-        var title = L.control();
-        title.onAdd = function(map) {
-            this._div = L.DomUtil.create('div', 'ctl title');
-            this.update();
-            return this._div;
-        };
-        title.update = function(props) {
-            this._div.innerHTML = "Carnegie Mellon Accessibility Map";
-        };
-        title.addTo(map);
-
-        // Note
-        var title = L.control({position: 'bottomleft'});
-        title.onAdd = function(map) {
-            this._div = L.DomUtil.create('div', 'ctl src');
-            this.update();
-            return this._div;
-        };
-
-        title.update = function(props) {
-            this._div.innerHTML = src;
-        };
-	
-        title.addTo(map);
-	
-	*/
-	//Add building names
-	L.geoPackageFeatureLayer([], {
-		geoPackageUrl: './overlays/building_labels.gpkg',
-		layerName: 'building_labels',
-		pointToLayer: function (geoJsonPoint, latlng) {
-			tooltip = L.tooltip({
-				permanent:true,
-				direction: 'center',
-			});
-			nullIcon = L.icon({iconUrl: 'icons/accessible_without_automatic_door.png', iconSize: [1,1]})
-			marker = L.marker(
-				latlng, {
-				opacity: 0,
-				icon: nullIcon
-			}).bindTooltip(tooltip);
-			marker.setTooltipContent(geoJsonPoint.properties.name);
-			return marker;
+function loadpath(layerfile, color = 'blue') {
+	return L.geoPackageFeatureLayer([], {
+		geoPackageUrl: './paths/' + layerfile,
+		layerName: 'shortest-path'
+		style = function(feature) {
+			return {color: color};
 		}
 	}).addTo(map);
-    
-	//Add building entrances
-	L.geoPackageFeatureLayer([], {
-	geoPackageUrl: './overlays/all_building_entrances.gpkg',
-	layerName: 'all_building_entrances',
+}
+
+function clearPaths() {
+	map.removeLayer(overallpath1);
+	map.removeLayer(overallpath2);
+	map.removeLayer(accessiblepath1);
+	map.removeLayer(accessiblepath2);
+}
+
+function showroute(e) {
+		clearPaths();
+		origin = $('#origin').val();
+		destination = $('#destination').val();
+		basename1 = origin + destination;
+		basename2 = destination + origin;
+		overall = $('#all').prop("checked");
+		accessible = $('#all').prop("checked");
+		if (overall) {
+			layerfile1 = basename1 + '-all.gpkg';
+			overallpath1 =loadpath(layerfile1);	   
+			layerfile2 = basename2 + '-all.gpkg';
+			overallpath2 = loadpath(layerfile2);	   			
+		}
+		if (accessible) {
+			layerfile1 = basename1 + '-access.gpkg';
+			accessiblepath1 = loadpath(layerfile1, 'red');
+			layerfile2 = basename2 + '-access.gpkg';
+			accessiblepath2 = loadpath(layerfile2, 'red');
+		}
+}
+
+$('#all').onchange = showroute;
+$('#accessible').onchange = showroute;
+$('#slope').onchange = showroute;
+
+
+/* **** Leaflet **** */
+
+// Base layers
+//  .. OpenStreetMap
+var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+
+
+// Overlay layers (TMS)
+var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true, 
+	opacity: 1, 
+	attribution: "",
+	maxZoom: 21
+});
+
+// Map
+var map = L.map('map', {
+	center: [40.44253, -79.94333],
+	opacity: 1,
+	zoom: 17,
+	minZoom: 0,
+	maxZoom: 21,
+	layers: [osm]
+});
+
+var basemaps = {"OpenStreetMap": osm}
+var overlaymaps = {"Layer": lyr}
+lyr.addTo(map);
+
+//Add building names
+L.geoPackageFeatureLayer([], {
+	geoPackageUrl: './overlays/building_labels.gpkg',
+	layerName: 'building_labels',
 	pointToLayer: function (geoJsonPoint, latlng) {
-			switch(geoJsonPoint.properties.entrance) {
-				case 'accessible':
-					iconpath = 'icons/accessible_without_automatic_door.png';
-					break;
-				case 'inaccessible':
-					iconpath = 'icons/inaccessible.png';
-					break;
-				case 'automatic':				
-					iconpath = 'icons/accessible_with_automatic_door.png';
-					break;
-				default:
-				iconpath = 'icons/unknown.png';
-			}
-			icon = L.icon({
-				iconUrl: iconpath,
-				iconSize: [16, 16],	
-				});
-			marker = L.marker(latlng, {
-				icon: icon
-				}
-			);
-			return marker;
+		tooltip = L.tooltip({
+			permanent:true,
+			direction: 'center',
+		});
+		nullIcon = L.icon({iconUrl: 'icons/accessible_without_automatic_door.png', iconSize: [1,1]})
+		marker = L.marker(
+			latlng, {
+			opacity: 0,
+			icon: nullIcon
+		}).bindTooltip(tooltip);
+		marker.setTooltipContent(geoJsonPoint.properties.name);
+		return marker;
+	}
+}).addTo(map);
+
+//Add building entrances
+L.geoPackageFeatureLayer([], {
+geoPackageUrl: './overlays/all_building_entrances.gpkg',
+layerName: 'all_building_entrances',
+pointToLayer: function (geoJsonPoint, latlng) {
+		switch(geoJsonPoint.properties.entrance) {
+			case 'accessible':
+				iconpath = 'icons/accessible_without_automatic_door.png';
+				break;
+			case 'inaccessible':
+				iconpath = 'icons/inaccessible.png';
+				break;
+			case 'automatic':				
+				iconpath = 'icons/accessible_with_automatic_door.png';
+				break;
+			default:
+			iconpath = 'icons/unknown.png';
 		}
-	}).addTo(map);
-	
-	
-        // Fit to overlay bounds (SW and NE points with (lat, lon))
-        map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
+		icon = L.icon({
+			iconUrl: iconpath,
+			iconSize: [16, 16],	
+			});
+		marker = L.marker(latlng, {
+			icon: icon
+			}
+		);
+		return marker;
+	}
+}).addTo(map);
 
-        </script>
 
-        </body>
-        </html>
+// Fit to overlay bounds (SW and NE points with (lat, lon))
+map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
 
-        
+</script>
+
+</body>
+</html>
+
+
