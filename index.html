@@ -166,6 +166,7 @@
 <div id="map"></div>
 
 <script>
+"use strict";
 var overallpath1;
 var accessiblepath1;
 var overallpath2;
@@ -194,6 +195,14 @@ function clearPaths() {
 
 function showroute(e) {
 		clearPaths();
+		var origin;
+		var destination;
+		var basename1;
+		var basename2;
+		var layerfile1;
+		var layerfile2;
+		var overall;
+		var accessible;
 		origin = $('#origin').val();
 		destination = $('#destination').val();
 		basename1 = origin + destination;
@@ -202,7 +211,7 @@ function showroute(e) {
 		accessible = $('#accessible').prop("checked");
 		if (overall) {
 			layerfile1 = basename1 + '-all.gpkg';
-			overallpath1 =loadpath(layerfile1);	   
+			overallpath1 = loadpath(layerfile1);	   
 			layerfile2 = basename2 + '-all.gpkg';
 			overallpath2 = loadpath(layerfile2);	   			
 		}
