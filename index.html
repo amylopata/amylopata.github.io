@@ -55,6 +55,30 @@
 		#control div {
 			padding: 5px;
 		}
+		
+		#hamburger, #hamburger:hover {
+			display: none;
+			background-image: url('/icons/hamburger_menu.png');
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			background-color: #333333;
+			color: transparent;
+		}
+		#hamburger>a {
+			color: transparent;
+			border-radius: 4px;
+		}
+		@media only screen and (max-width: 1100px) {
+			#control {
+				display: none;
+			}
+		}
+		@media only screen and (max-width: 1100px) {
+			#hamburger, #hamburger:hover {
+				display: block;
+			}
+		}
 		.leaflet-tooltip {
 			font-size: 8pt;
 		}
@@ -88,6 +112,9 @@
 
 </head>
 <body>
+<div id="hamburger">
+		<a href="#"></a>
+</div>
 <div id="control">
 	<div>
 	<label for="origin">From:</label>
@@ -274,7 +301,7 @@ var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true,
 var map = L.map('map', {
 	center: [40.44253, -79.94333],
 	opacity: 1,
-	zoom: 17,
+	zoom: 18,
 	minZoom: 0,
 	maxZoom: 21,
 	layers: [osm]
