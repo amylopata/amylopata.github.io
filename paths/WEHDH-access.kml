@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="WEHDH-access.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="WEHDH-access">
+      <name>WEHDH-access</name>
+      <Placemark id="WEHDH-access.1">
+        <TimeSpan>
+          <end>1357578.54444, 411634.630585</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#WEHDH-access.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357578.63189, 411634.980377</SimpleData>
+            <SimpleData name="cost">8.07098508597124</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9451699045362,40.4424530108408,0
+            -79.9451450622919,40.4424415851302,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

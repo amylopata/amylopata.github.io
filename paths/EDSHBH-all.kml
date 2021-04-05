@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="EDSHBH-all.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="EDSHBH-all">
+      <name>EDSHBH-all</name>
+      <Placemark id="EDSHBH-all.1">
+        <TimeSpan>
+          <end>1357575.50836, 412273.33945</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#EDSHBH-all.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357558.19367, 412231.233264</SimpleData>
+            <SimpleData name="cost">55.3141763028842</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.945265979735,40.4441066475122,0
+            -79.9452327412333,40.4441106781671,0
+            -79.945199723811,40.4441215032226,0
+            -79.9451913834366,40.4441386581637,0
+            -79.9451919361431,40.4441556441888,0
+            -79.9451947673926,40.4441742865875,0
+            -79.9451932073694,40.4441947120465,0
+            -79.9452138248064,40.4442130166119,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

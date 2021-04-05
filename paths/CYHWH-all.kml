@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="CYHWH-all.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="CYHWH-all">
+      <name>CYHWH-all</name>
+      <Placemark id="CYHWH-all.1">
+        <TimeSpan>
+          <end>1358041.23426, 412263.206419</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#CYHWH-all.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357950.23374, 412206.343392</SimpleData>
+            <SimpleData name="cost">198.55136214302</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9438765599056,40.4440684439849,0
+            -79.943858000433,40.4440450011678,0
+            -79.9438331578246,40.4440335751784,0
+            -79.9437931942331,40.4440360334243,0
+            -79.9437041669778,40.4439663379322,0
+            -79.9436797110515,40.4439668021327,0
+            -79.943649469034,40.4439945705786,0
+            -79.9436544678864,40.444011472213,0
+            -79.9436492893406,40.4440574610995,0
+            -79.9436588452009,40.4440776755415,0
+            -79.9436553928364,40.4441083347989,0
+            -79.9436361566406,40.444132495037,0
+            -79.9436301496023,40.4441530048728,0
+            -79.9436222506745,40.4441837485265,0
+            -79.9436074609934,40.444207824362,0
+            -79.9435794421131,40.44423555059,0
+            -79.9435632716611,40.4442171613381,0
+            -79.9435211399052,40.4442213602907,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>
