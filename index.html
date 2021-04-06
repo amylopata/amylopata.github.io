@@ -369,10 +369,15 @@ pointToLayer: function (geoJsonPoint, latlng) {
 	}
 }).addTo(map);
 
-
-// Fit to overlay bounds (SW and NE points with (lat, lon))
-//map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
-
+var tooltipThreshold = 17;
+mymap.on('zoomend', function() {
+  if (map.getZoom() < tooltipThreshold) {
+      $(".leaflet-tooltip").css("display","none")
+  } else { 
+      $(".leaflet-tooltip").css("display","block")
+  }
+})
+	
 </script>
 
 </body>
