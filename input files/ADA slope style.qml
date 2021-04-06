@@ -42,8 +42,7 @@
           </colorramp>
           <item label="&lt;= 5.0000" value="5" alpha="255" color="#ddcc77"/>
           <item label="5.0000 - 8.3300" value="8.33" alpha="255" color="#65b0d6"/>
-          <item label="8.3300 - 35.0000" value="35" alpha="255" color="#882255"/>
-          <item label="> 35.0000" value="inf" alpha="255" color="#000000"/>
+          <item label="> 8.33" value="inf" alpha="255" color="#882255"/>
         </colorrampshader>
       </rastershader>
     </rasterrenderer>
