@@ -281,6 +281,7 @@ $(document).ready(function(){
 	$('#accessible').onchange = showroute;
 	$('#slope').onchange = showroute;
 	$('#hamburger').click(showcontrol);
+	showroute();
  }
 );
 
@@ -370,7 +371,7 @@ pointToLayer: function (geoJsonPoint, latlng) {
 
 
 // Fit to overlay bounds (SW and NE points with (lat, lon))
-map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
+//map.fitBounds([[40.43701, -79.95041], [40.44694, -79.93631]]);
 
 </script>
 
