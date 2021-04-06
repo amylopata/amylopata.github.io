@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="HHPH-all.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="HHPH-all">
+      <name>HHPH-all</name>
+      <Placemark id="HHPH-all.1">
+        <TimeSpan>
+          <end>1357300.5037, 411488.636239</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#HHPH-all.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357255.73035, 411579.931895</SimpleData>
+            <SimpleData name="cost">135.633485324436</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9462744224939,40.4422824564799,0
+            -79.9462387405599,40.442279735265,0
+            -79.9462049500699,40.442266780175,0
+            -79.9461624326412,40.4422590898737,0
+            -79.9461269166021,40.4422614644321,0
+            -79.9461042974742,40.4422499966803,0
+            -79.946094851724,40.4422331796392,0
+            -79.9460843554391,40.4421840891464,0
+            -79.9460771329084,40.4421672298576,0
+            -79.9460985908746,40.4421430269585,0
+            -79.9461046522759,40.4421242155897,0
+            -79.9461039887724,40.4421038323574,0
+            -79.9461123286633,40.4420866773443,0
+            -79.9461161668538,40.4420679082213,0
+            -79.9461288978475,40.4420489701108,0
+            -79.9461149504256,40.4420305389618,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>
