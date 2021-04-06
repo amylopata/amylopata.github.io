@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="MMWWG-access.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="MMWWG-access">
+      <name>MMWWG-access</name>
+      <Placemark id="MMWWG-access.1">
+        <TimeSpan>
+          <end>1358678.50843, 411691.526405</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#MMWWG-access.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1358622.23568, 411673.523059</SimpleData>
+            <SimpleData name="cost">73.9467620661035</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9413943519762,40.442645338413,0
+            -79.9413841186343,40.4426727268683,0
+            -79.9413618863859,40.4426731484228,0
+            -79.9413373205674,40.4426702149182,0
+            -79.9413128099229,40.4426689800132,0
+            -79.9412767969591,40.4426560656378,0
+            -79.9412543992045,40.4426513913571,0
+            -79.9412102657352,40.4426624260412,0
+            -79.9411754664986,40.4426868809411,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="CICHBH-all.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="CICHBH-all">
+      <name>CICHBH-all</name>
+      <Placemark id="CICHBH-all.1">
+        <TimeSpan>
+          <end>1357472.21047, 412347.910685</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#CICHBH-all.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357264.2374, 412150.365776</SimpleData>
+            <SimpleData name="cost">440.883723109321</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.946312454469,40.4438607115393,0
+            -79.9463193228296,40.444003351862,0
+            -79.9463206500045,40.4440441183108,0
+            -79.946322696069,40.4441069665855,0
+            -79.946335879916,40.4443752611947,0
+            -79.9463348179301,40.4444109740858,0
+            -79.9463271414021,40.4444485123311,0
+            -79.9462924536959,40.4444763659679,0
+            -79.9462346483845,40.444477464455,0
+            -79.9462106346633,40.4444915180064,0
+            -79.9461239266741,40.4444931656647,0
+            -79.9459928083325,40.4444973567545,0
+            -79.9458639132569,40.4445015054537,0
+            -79.9457061154929,40.4445062031169,0
+            -79.9455883367964,40.4445101403144,0
+            -79.945561546843,40.444507249945,0
+            -79.9455542689142,40.4444886920279,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>
