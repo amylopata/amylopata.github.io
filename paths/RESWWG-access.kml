@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="RESWWG-access.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="RESWWG-access">
+      <name>RESWWG-access</name>
+      <Placemark id="RESWWG-access.1">
+        <TimeSpan>
+          <end>1358845.45749, 411644.599651</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#RESWWG-access.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1358886.0388, 411626.694684</SimpleData>
+            <SimpleData name="cost">77.3263979587917</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9404427911901,40.4425257059049,0
+            -79.9404266220024,40.4425073162087,0
+            -79.9404548069105,40.4424846865523,0
+            -79.9405037177325,40.4424837595105,0
+            -79.9405375623891,40.4424984148718,0
+            -79.9405254915646,40.4425377356277,0
+            -79.9405820096933,40.4425655584239,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>
