@@ -10,8 +10,9 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/@ngageoint/leaflet-geopackage@3.0.3/dist/leaflet-geopackage.js"></script>
-	<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
 	<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+	<!-- jQuery -->  
+	<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
 		
 	<style>
 		body { margin:0; padding:0; }
@@ -220,7 +221,7 @@ var overallpath1;
 var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
-
+/*Load a KML file containing a specific path and add to the map*/
 function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 	var customLayer = L.geoJson( null, {
 		style : function(feature) {
@@ -229,17 +230,15 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 	});
 	return omnivore.kml( './paths/' + layerfile, null, customLayer).addTo(map);
 }
+	
+/*Clear all current paths from the map*/
 function clearPaths() {	
 		if (map.hasLayer(overallpath1)) {map.removeLayer(overallpath1)};
 		if (map.hasLayer(overallpath2)) {map.removeLayer(overallpath2)};
 		if (map.hasLayer(accessiblepath1)) {map.removeLayer(accessiblepath1)};
 		if (map.hasLayer(accessiblepath2)) {map.removeLayer(accessiblepath2)};
-		overallpath1 = null;
-		overallpath2 = null;
-		accessiblepath1 = null;
-		accessiblepath2 = null;
 }
-
+/*Show the currently selected paths on the map*/
 function showroute(e) {
 		clearPaths();
 		var origin;
@@ -285,7 +284,6 @@ $(document).ready(function(){
  }
 );
 
-/* **** Leaflet **** */
 
 // Base layers
 //  .. OpenStreetMap
@@ -369,6 +367,7 @@ pointToLayer: function (geoJsonPoint, latlng) {
 	}
 }).addTo(map);
 
+/*Hide labels when zoomed out*/
 var tooltipThreshold = 17;
 map.on('zoomend', function() {
   if (map.getZoom() < tooltipThreshold) {
