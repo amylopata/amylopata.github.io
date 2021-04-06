@@ -370,7 +370,7 @@ pointToLayer: function (geoJsonPoint, latlng) {
 }).addTo(map);
 
 var tooltipThreshold = 17;
-mymap.on('zoomend', function() {
+map.on('zoomend', function() {
   if (map.getZoom() < tooltipThreshold) {
       $(".leaflet-tooltip").css("display","none")
   } else { 
