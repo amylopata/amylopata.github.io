@@ -35,7 +35,8 @@ from qgis.core import (QgsProcessing,
                        QgsMapLayer,
                        QgsRasterLayer, 
                        QgsVectorLayer,
-                       QgsProcessingParameterVectorDestination
+                       QgsProcessingParameterVectorDestination,
+                       QgsCoordinateReferenceSystem
                        )
 from qgis.analysis import QgsRasterCalculatorEntry, QgsRasterCalculator
 import processing
@@ -301,7 +302,7 @@ class AccessibleNavigationProcessingAlgorithm(QgsProcessingAlgorithm):
         # QgsProject.instance().removeAllMapLayers()
         for key in access_cost_dict:
             outputfile = out_dir + "\\" + key + "-access.kml"
-            input = all_cost_dict[key][1] + ".gpkg"
+            input = access_cost_dict[key][1] + ".gpkg"
             result = processing.run('native:reprojectlayer',
             {'INPUT' : input, 
               'OPERATION' : '+proj=noop', 
