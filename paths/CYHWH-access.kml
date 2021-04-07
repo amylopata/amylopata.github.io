@@ -16,7 +16,7 @@
           <SchemaData schemaUrl="#CYHWH-access.schema">
             <SimpleData name="fid">1</SimpleData>
             <SimpleData name="start">1357950.23374, 412206.343392</SimpleData>
-            <SimpleData name="cost">0.000538048585545617</SimpleData>
+            <SimpleData name="cost">196.506871932346</SimpleData>
           </SchemaData>
         </ExtendedData>
         <LineString>
