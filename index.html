@@ -285,9 +285,9 @@ function showcontrol(e) {
 	$('#control').show();
 }
 $(document).ready(function(){
-	$('#all').onchange = showroute;
-	$('#accessible').onchange = showroute;
-	$('#slope').onchange = toggleSlope;
+	$('#all').change(showroute);
+	$('#accessible').change(showroute);
+	$('#slope').change(toggleSlope);
 	$('#hamburger').click(showcontrol);
 	showroute();
  }
