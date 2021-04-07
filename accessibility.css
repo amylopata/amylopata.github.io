@@ -113,3 +113,6 @@ span.accessible {
 	border-color: black;
 	border-width: 1px;
 }
+.slopedesc {
+	vertical-align: top;
+}
