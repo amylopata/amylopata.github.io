@@ -59,8 +59,10 @@ function showroute(e) {
 function toggleSlope(e) {
 	if ($('#slope').prop("checked")) {
 		slopelyr.addTo(map);
+		$('#slopekey').show();
 	} else {
 		map.removeLayer(slopelyr);
+		$('#slopekey').hide();
 	}
 }
 

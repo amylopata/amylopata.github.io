@@ -96,3 +96,21 @@ span.accessible {
 	text-decoration-style: solid;
 	text-decoration-thickness: 3px;
 }
+#slopekey {
+	display: none;
+	position:absolute;
+	bottom: 5px;
+	right: 5px;
+	position: absolute;
+	z-index: 9;
+	background-color: beige;
+	border-color: black;
+	border-style: double;
+	width:min-content;
+	padding: 10px;
+}
+#slopekey .slopecode {
+	width: 16px;
+	height: 16px;
+	display: inline;
+}
