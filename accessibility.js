@@ -4,6 +4,7 @@ var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
 var map;
+var slopelyr;
 /*Load a KML file containing a specific path and add to the map*/
 function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 	var customLayer = L.geoJson( null, {
@@ -86,7 +87,7 @@ $(document).ready(function(){
 
 	//Overlay slope layer (TMS)
 
-	var slopelyr = L.tileLayer('slope-tiles/{z}/{x}/{y}.png', {tms: true, 
+	slopelyr = L.tileLayer('slope-tiles/{z}/{x}/{y}.png', {tms: true, 
 		opacity: 1, 
 		attribution: "",
 		maxZoom: 21
