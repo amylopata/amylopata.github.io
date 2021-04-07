@@ -79,11 +79,6 @@ body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet
 .legend img {
 	width: 16px;
 }
-div.legend {
-	border-style:solid;
-	border-width: 1px;
-	border-color: gray;
-}
 span.all {
 	text-decoration: underline;
 	text-decoration-color: #D41159;
@@ -108,9 +103,13 @@ span.accessible {
 	border-style: double;
 	width:min-content;
 	padding: 10px;
+	white-space: nowrap;
 }
 #slopekey .slopecode {
 	width: 16px;
 	height: 16px;
-	display: inline;
+	display: inline-block;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
 }
