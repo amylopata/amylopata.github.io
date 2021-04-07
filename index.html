@@ -273,13 +273,21 @@ function showroute(e) {
 		}
 }
 
+function toggleSlope(e) {
+	if ($('#slope').prop("checked")) {
+		map.remove.(slopelyr);
+	} else {
+		slopelyr.addTo(map);
+	}
+}
+
 function showcontrol(e) {
 	$('#control').show();
 }
 $(document).ready(function(){
 	$('#all').onchange = showroute;
 	$('#accessible').onchange = showroute;
-	$('#slope').onchange = showroute;
+	$('#slope').onchange = toggleSlope;
 	$('#hamburger').click(showcontrol);
 	showroute();
  }
@@ -291,8 +299,16 @@ $(document).ready(function(){
 var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
 
 
-// Overlay layers (TMS)
+// Overlay orthomosaic layer (TMS)
 var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true, 
+	opacity: 1, 
+	attribution: "",
+	maxZoom: 21
+});
+
+//Overlay slope layer (TMS)
+
+var slopelyr = L.tileLayer('slope-tiles/{z}/{x}/{y}.png', {tms: true, 
 	opacity: 1, 
 	attribution: "",
 	maxZoom: 21
