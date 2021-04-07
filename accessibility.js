@@ -78,7 +78,7 @@ $(document).ready(function(){
 	var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
 
 	// Overlay orthomosaic layer (TMS)
-	var lyr = L.tileLayer('./{z}/{x}/{y}.png', {tms: true, 
+	var lyr = L.tileLayer('orthomosaic/{z}/{x}/{y}.png', {tms: true, 
 		opacity: 1, 
 		attribution: "",
 		maxZoom: 21
