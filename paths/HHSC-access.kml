@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="HHSC-access.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="HHSC-access">
+      <name>HHSC-access</name>
+      <Placemark id="HHSC-access.1">
+        <TimeSpan>
+          <end>1357089.8416, 411556.233501</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#HHSC-access.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357088.09264, 411555.88371</SimpleData>
+            <SimpleData name="cost">2.88632236602696e-05</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9468974847274,40.4422196245492,0
+            -79.9468679746193,40.4422014893225,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

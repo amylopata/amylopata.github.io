@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="EDSNSH-all.schema">
+      <SimpleField name="fid" type="float"/>
+      <SimpleField name="start" type="string"/>
+      <SimpleField name="cost" type="float"/>
+    </Schema>
+    <Document id="EDSNSH-all">
+      <name>EDSNSH-all</name>
+      <Placemark id="EDSNSH-all.1">
+        <TimeSpan>
+          <end>1357474.57157, 412064.087446</end>
+        </TimeSpan>
+        <ExtendedData>
+          <SchemaData schemaUrl="#EDSNSH-all.schema">
+            <SimpleData name="fid">1</SimpleData>
+            <SimpleData name="start">1357441.51625, 412156.071754</SimpleData>
+            <SimpleData name="cost">0.000311863169328858</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            -79.9456811035504,40.4438744075442,0
+            -79.9456979498301,40.443845193396,0
+            -79.9456689368753,40.4438423452897,0
+            -79.9456503215605,40.4438172041568,0
+            -79.945647545482,40.4438002603703,0
+            -79.9456465504091,40.4437696855267,0
+            -79.945623820295,40.443754820479,0
+            -79.9455993091782,40.4437535864831,0
+            -79.9455724089648,40.443747298911,0
+            -79.9455429538239,40.4437308619533,0
+            -79.9455557405715,40.4437136225137,0
+            -79.9455618575448,40.443696509781,0
+            -79.9455409637759,40.4436697122633,0
+            -79.9455514166994,40.4436491178546,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>
