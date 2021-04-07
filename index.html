@@ -275,7 +275,7 @@ function showroute(e) {
 
 function toggleSlope(e) {
 	if ($('#slope').prop("checked")) {
-		map.remove.(slopelyr);
+		map.removeLayer(slopelyr);
 	} else {
 		slopelyr.addTo(map);
 	}
