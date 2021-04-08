@@ -77,8 +77,14 @@ body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet
 .leaflet-tooltip-right:before {
 	border: none !important;
 }
+fieldset.legend {
+	white-space: nowrap;
+}
 .legend img {
 	width: 16px;
+}
+.legend span {
+	vertical-align: top;
 }
 span.all {
 	text-decoration: underline;
