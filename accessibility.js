@@ -68,7 +68,9 @@ function toggleControl(e) {
 }
 
 function hideControl(e) {
-	$('#control').slideUp();
+	if ($('#hamburger').is(':visible') {
+		$('#control').slideUp();
+	}
 }
 $(document).ready(function(){
 	$('#all').change(showroute);
