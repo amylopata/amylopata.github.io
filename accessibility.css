@@ -59,6 +59,7 @@ body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet
 @media only screen and (max-width: 1100px) {
 	#control {
 		display: none;
+		top: 53px;
 	}
 }
 @media only screen and (max-width: 1100px) {

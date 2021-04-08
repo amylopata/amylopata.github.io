@@ -51,9 +51,6 @@ function showroute(e) {
 			layerfile2 = basename2 + '-access.kml';
 			accessiblepath2 = loadpath(layerfile2, '#1A85FF', "");
 		}
-		if ($('#hamburger').is(":visible")) {
-			$('#control').hide();
-		}
 }
 
 function toggleSlope(e) {
@@ -67,13 +64,14 @@ function toggleSlope(e) {
 }
 
 function showcontrol(e) {
-	$('#control').show();
+	$('#control').slideToggle();
 }
 $(document).ready(function(){
 	$('#all').change(showroute);
 	$('#accessible').change(showroute);
 	$('#slope').change(toggleSlope);
 	$('#hamburger').click(showcontrol);
+	$('#map').click($('#control').hide());
 	
 
 	// Base layers
