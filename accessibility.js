@@ -68,7 +68,7 @@ function toggleControl(e) {
 }
 
 function hideControl(e) {
-	if ($('#hamburger').is(':visible') {
+	if ($('#hamburger').is(':visible')) {
 		$('#control').slideUp();
 	}
 }
