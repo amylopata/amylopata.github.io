@@ -63,15 +63,19 @@ function toggleSlope(e) {
 	}
 }
 
-function showcontrol(e) {
+function toggleControl(e) {
 	$('#control').slideToggle();
+}
+
+function hideControl(e) {
+	$('#control').slideUp();
 }
 $(document).ready(function(){
 	$('#all').change(showroute);
 	$('#accessible').change(showroute);
 	$('#slope').change(toggleSlope);
-	$('#hamburger').click(showcontrol);
-	$('#map').click($('#control').hide());
+	$('#hamburger').click(toggleControl);
+	$('#map').click(hideControl);
 	
 
 	// Base layers
