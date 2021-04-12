@@ -11,10 +11,11 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 		style : function(feature) {
 			return {color: color, dashArray: dash};
 		},
+		/* Add a line behind each path as a background for emphasis */
 		onEachFeature : function (feature, layer) {
 			background = L.polyline(feature.getLatLngs());
 			background.addTo(map);
-		};
+		}
 	});
 	return omnivore.kml( './paths/' + layerfile, null, customLayer).addTo(map);
 }
