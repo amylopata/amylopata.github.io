@@ -14,11 +14,8 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 		},
 		/* Add a line behind each path as a background for emphasis */
 		onEachFeature : function (feature, layer) {
-			background = L.geoJSON.geometryToLayer(feature, { 
-				style : function(feature) {
-					return {color: 'black'}; /*Set the color of the background */
-				}
-			});
+			background = L.GeoJSON.geometryToLayer(feature);
+			background.options.color = 'black';
 			background.addTo(map);
 		}
 	});
