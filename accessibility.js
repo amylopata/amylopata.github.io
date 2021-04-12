@@ -13,7 +13,7 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 		},
 		/* Add a line behind each path as a background for emphasis */
 		onEachFeature : function (feature, layer) {
-			background = L.polyline(feature.getLatLngs());
+			background = geometryToLayer(feature);
 			background.addTo(map);
 		}
 	});
