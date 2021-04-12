@@ -3,7 +3,7 @@ var overallpath1;
 var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
-var background;
+var backgrounds = [];
 var map;
 var slopelyr;
 /*Load a KML file containing a specific path and add to the map*/
@@ -12,10 +12,12 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 		style : function(feature) {
 			return {color: color, dashArray: dash};
 		},
-		/* Add a line behind each path as a background for emphasis */
+		/* Add a black line behind each path as a background for emphasis */
 		onEachFeature : function (feature, layer) {
 			background = L.GeoJSON.geometryToLayer(feature);
 			background.options.color = 'black';
+			background.options.stroke-width = 7;
+			backgrounds.push(background);
 			background.addTo(map);
 		}
 	});
@@ -28,6 +30,7 @@ function clearPaths() {
 		if (map.hasLayer(overallpath2)) {map.removeLayer(overallpath2)};
 		if (map.hasLayer(accessiblepath1)) {map.removeLayer(accessiblepath1)};
 		if (map.hasLayer(accessiblepath2)) {map.removeLayer(accessiblepath2)};
+		backgrounds.forEach(function(background, index) {map.removeLayer(background);});
 }
 /*Show the currently selected paths on the map*/
 function showroute(e) {
