@@ -17,6 +17,7 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 			var background = L.GeoJSON.geometryToLayer(feature);
 			background.options['color'] = 'black';
 			background.options['weight'] = 7;
+			background.options['dash'] = dash;
 			backgrounds.push(background);
 			background.addTo(map);
 		}
