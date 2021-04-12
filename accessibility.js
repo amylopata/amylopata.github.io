@@ -10,7 +10,11 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 	var customLayer = L.geoJson( null, {
 		style : function(feature) {
 			return {color: color, dashArray: dash};
-		}
+		},
+		onEachFeature : function (feature, layer) {
+			background = L.polyline(feature.getLatLngs());
+			background.addTo(map);
+		};
 	});
 	return omnivore.kml( './paths/' + layerfile, null, customLayer).addTo(map);
 }
