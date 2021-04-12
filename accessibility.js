@@ -16,7 +16,7 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 		onEachFeature : function (feature, layer) {
 			background = L.GeoJSON.geometryToLayer(feature, { 
 				style : function(feature) {
-					return {color: black}; /*Set the color of the background */
+					return {color: 'black'}; /*Set the color of the background */
 				}
 			});
 			background.addTo(map);
