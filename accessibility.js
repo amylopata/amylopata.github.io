@@ -7,7 +7,7 @@ var backgrounds = [];
 var map;
 var slopelyr;
 /*Load a KML file containing a specific path and add to the map*/
-function loadpath(layerfile, color = '#D41159', dash = "4,4") {
+function loadpath(layerfile, color = '#D41159', dash = "7,7") {
 	var customLayer = L.geoJson( null, {
 		style : function(feature) {
 			return {color: color, dashArray: dash};
