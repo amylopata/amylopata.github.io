@@ -3,6 +3,7 @@ var overallpath1;
 var accessiblepath1;
 var overallpath2;
 var accessiblepath2;
+var background;
 var map;
 var slopelyr;
 /*Load a KML file containing a specific path and add to the map*/
@@ -13,7 +14,7 @@ function loadpath(layerfile, color = '#D41159', dash = "4,4") {
 		},
 		/* Add a line behind each path as a background for emphasis */
 		onEachFeature : function (feature, layer) {
-			var background = L.GeoJSON.geometryToLayer(feature, { 
+			background = L.GeoJSON.geometryToLayer(feature, { 
 				style : function(feature) {
 					return {color: black}; /*Set the color of the background */
 				}
