@@ -177,9 +177,10 @@ $(document).ready(function(){
 				iconSize: [16, 16],	
 				});
 			var building_name = getBuildingName(geoJsonPoint.properties.building);
+			var entrance_name = iconpath.substring(6, iconpath.length - 4).replace(/_/gi,' ');
 			marker = L.marker(latlng, {
 				icon: icon,
-				alt:  building_name + " - " + geoJsonPoint.properties.entrance + " entrance"
+				alt:  building_name + " - " + entrance_name;
 				}
 			);
 			return marker;
