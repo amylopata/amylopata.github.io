@@ -176,8 +176,8 @@ $(document).ready(function(){
 				iconUrl: iconpath,
 				iconSize: [16, 16],	
 				});
+			$(`option[value="${buildingCode}"]`).first().text();
 			marker = L.marker(latlng, {
-				var building_name = getBuildingName(geoJsonPoint.properties.building);
 				icon: icon,
 				alt:  building_name + " - " + geoJsonPoint.properties.entrance + " entrance"
 				}
