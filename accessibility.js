@@ -180,7 +180,7 @@ $(document).ready(function(){
 			var entrance_name = iconpath.substring(6, iconpath.length - 4).replace(/_/gi,' ');
 			marker = L.marker(latlng, {
 				icon: icon,
-				alt:  building_name + " - " + entrance_name;
+				alt:  building_name + " - " + entrance_name,
 				}
 			);
 			return marker;
