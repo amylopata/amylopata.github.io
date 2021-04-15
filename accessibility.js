@@ -83,6 +83,10 @@ function hideControl(e) {
 		$('#control').slideUp();
 	}
 }
+
+function getBuildingName(buildingCode) {
+	return $(`option[value="${buildingCode}"]`).first().text();
+}
 $(document).ready(function(){
 	$('#all').change(showroute);
 	$('#accessible').change(showroute);
@@ -173,7 +177,9 @@ $(document).ready(function(){
 				iconSize: [16, 16],	
 				});
 			marker = L.marker(latlng, {
-				icon: icon
+				var building_name = getBuildingName(geoJsonPoint.properties.building);
+				icon: icon,
+				alt:  building_name + " - " + geoJsonPoint.properties.entrance + " entrance"
 				}
 			);
 			return marker;
