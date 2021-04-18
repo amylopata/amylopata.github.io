@@ -9,9 +9,6 @@
     <Document id="HHSC-access">
       <name>HHSC-access</name>
       <Placemark id="HHSC-access.1">
-        <TimeSpan>
-          <end>1357089.8416, 411556.233501</end>
-        </TimeSpan>
         <ExtendedData>
           <SchemaData schemaUrl="#HHSC-access.schema">
             <SimpleData name="fid">1</SimpleData>
@@ -20,9 +17,10 @@
           </SchemaData>
         </ExtendedData>
         <LineString>
+          <extrude>0</extrude>
           <coordinates>
-            -79.9468974847274,40.4422196245492,0
-            -79.9468679746193,40.4422014893225,0
+            -79.9468974847274,40.442219624549,0
+            -79.9468679746193,40.4422014893223,0
           </coordinates>
         </LineString>
       </Placemark>

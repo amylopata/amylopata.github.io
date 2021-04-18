@@ -9,9 +9,6 @@
     <Document id="EDSHBH-access">
       <name>EDSHBH-access</name>
       <Placemark id="EDSHBH-access.1">
-        <TimeSpan>
-          <end>1357575.50836, 412273.33945</end>
-        </TimeSpan>
         <ExtendedData>
           <SchemaData schemaUrl="#EDSHBH-access.schema">
             <SimpleData name="fid">1</SimpleData>
@@ -20,13 +17,10 @@
           </SchemaData>
         </ExtendedData>
         <LineString>
+          <extrude>0</extrude>
           <coordinates>
-            -79.9452541448315,40.4440847769046,0
-            -79.9452549186423,40.4441085573399,0
-            -79.9452312364782,40.4441328023038,0
-            -79.9452054968387,40.4441621852995,0
-            -79.9452085491767,40.4441876221081,0
-            -79.9452142624571,40.4442161091817,0
+            -79.9452541448315,40.4440847769044,0
+            -79.9452142624571,40.4442161091815,0
           </coordinates>
         </LineString>
       </Placemark>
