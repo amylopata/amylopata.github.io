@@ -1,5 +1,13 @@
 body { margin:0; padding:0; }
 body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet MS", "Ubuntu", Serif; font-size: 11pt; }
+.sr-only {  /*Position screen reader only information off screen */
+position:absolute;
+left:-10000px;
+top:auto;
+width:1px;
+height:1px;
+overflow:hidden;
+}
 #map { 
 	position:absolute; 
 	top:0; 
