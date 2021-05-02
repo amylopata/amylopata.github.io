@@ -44,18 +44,7 @@ import shutil
 
 
 class AccessibleNavigationProcessingAlgorithm(QgsProcessingAlgorithm):
-    """
-    This is an example algorithm that takes a vector layer and
-    creates a new identical one.
-
-    It is meant to be used as an example of how to create your own
-    algorithms and explain methods and variables used to do it. An
-    algorithm like this will be available in all elements, and there
-    is not need for additional work.
-
-    All Processing algorithms should extend the QgsProcessingAlgorithm
-    class.
-    """
+   
 
     # Constants used to refer to parameters and outputs. They will be
     # used when calling the algorithm from another algorithm, or when
@@ -119,7 +108,7 @@ class AccessibleNavigationProcessingAlgorithm(QgsProcessingAlgorithm):
         parameters and outputs associated with it..
         """
         return self.tr("Creates vectors of shortest overall path and \
-        shortest wheelchair accessible path between each pair of endpoints \
+        shortest wheelchair accessible path between each pair of buildings \
         based on the 2010 ADA standards for ramp slopes.")
 
     def initAlgorithm(self, config=None):
